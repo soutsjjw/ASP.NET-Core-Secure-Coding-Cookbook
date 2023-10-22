@@ -15,13 +15,28 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="FundTransfer.ID" />
             <div class="form-group">
+                <label asp-for="FundTransfer.AccountFrom" class="control-label"></label>
+                <input asp-for="FundTransfer.AccountFrom" class="form-control" />
+                <span asp-validation-for="FundTransfer.AccountFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FundTransfer.AccountTo" class="control-label"></label>
+                <input asp-for="FundTransfer.AccountTo" class="form-control" />
+                <span asp-validation-for="FundTransfer.AccountTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FundTransfer.TransactionDate" class="control-label"></label>
+                <input asp-for="FundTransfer.TransactionDate" class="form-control" />
+                <span asp-validation-for="FundTransfer.TransactionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="FundTransfer.Amount" class="control-label"></label>
                 <input asp-for="FundTransfer.Amount" class="form-control" />
                 <span asp-validation-for="FundTransfer.Amount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FundTransfer.Note" class="control-label"></label>
-                <input asp-for="FundTransfer.Note" class="form-control" />
+                <textarea asp-for="FundTransfer.Note" class="form-control"></textarea>
                 <span asp-validation-for="FundTransfer.Note" class="text-danger"></span>
             </div>
             <div class="form-group">

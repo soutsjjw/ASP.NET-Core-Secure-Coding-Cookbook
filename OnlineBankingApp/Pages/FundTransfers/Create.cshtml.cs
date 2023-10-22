@@ -41,7 +41,7 @@ namespace OnlineBankingApp.Pages.FundTransfers
             if (await TryUpdateModelAsync<FundTransfer>(
                  emptyFundTransfer,
                  "fundtransfer",  
-                 f => f.ID, f => f.AccountFrom, f => f.AccountTo, f => f.Amount, f => f.Note))
+                 f => f.ID, f => f.AccountFrom, f => f.AccountTo, f => f.Amount, f=> f.TransactionDate, f => f.Note))
             {
                 _context.FundTransfer.Add(emptyFundTransfer);
                 await _context.SaveChangesAsync();

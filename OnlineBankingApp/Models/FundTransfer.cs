@@ -1,7 +1,9 @@
+using System.Globalization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Ganss.Xss;
 
 namespace OnlineBankingApp.Models
 {
@@ -31,6 +33,10 @@ namespace OnlineBankingApp.Models
         {
             get => note;
             set => note = new HtmlSanitizer().Sanitize(value);
+        }
+
+        public string GetResendLink(){
+            return $"/FundTransfers/Create?amount={Amount}&note={Note}";
         }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

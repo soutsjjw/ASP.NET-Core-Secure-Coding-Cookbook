@@ -23,12 +23,12 @@ namespace OnlineBankingApp.Models
                 context.Customer.AddRange(
                     new Customer
                     {
-                        FirstName = "Stanley",
+                        FirstName = "Dylan",
                         MiddleName = "Sybil",
-                        LastName = "Jobson",
+                        LastName = "Quin",
                         DateOfBirth = DateTime.Parse("10/11/1933"),
-                        Email = "stanley.s.jobson@lobortis.ca",
-                        Phone = "278133500",
+                        Email = "sed.pede.nec@lobortis.ca",
+                        Phone = "278133950",
                         Accounts = new List<Account>{ 
                             new Account { 
                                     Name = "Savings",
@@ -44,11 +44,11 @@ namespace OnlineBankingApp.Models
                     },
                     new Customer
                     {
-                        FirstName = "Axl",
+                        FirstName = "Doris",
                         MiddleName = "Lucius",
-                        LastName = "Torvalds",
+                        LastName = "Fallon",
                         DateOfBirth = DateTime.Parse("03/11/1945"),
-                        Email = "axl.l.torvalds@ut.net",
+                        Email = "in.at.pede@ut.net",
                         Phone = "585838762",
                         Accounts = new List<Account>{ 
                             new Account { 
@@ -64,6 +64,27 @@ namespace OnlineBankingApp.Models
                             }
                     }
                 );
+
+                context.SaveChanges();
+
+                context.FundTransfer.AddRange(
+                    new FundTransfer
+                    {
+                        CustomerID = 1,
+                        AccountFrom = 1,
+                        AccountTo = 2,
+                        Amount = 50.00m,
+                        TransactionDate = DateTime.Parse("07/30/2021")
+                    },
+                    new FundTransfer
+                    {
+                        CustomerID = 1,
+                        AccountFrom = 1,
+                        AccountTo = 2,
+                        Amount = 100.00m,
+                        TransactionDate = DateTime.Parse("08/05/2021")
+                    }
+                );                
                 context.SaveChanges();
             }
         }

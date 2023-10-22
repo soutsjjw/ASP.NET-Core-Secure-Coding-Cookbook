@@ -9,7 +9,7 @@ using OnlineBankingApp.Data;
 namespace OnlineBankingApp.Migrations
 {
     [DbContext(typeof(OnlineBankingAppContext))]
-    [Migration("20201221051213_InitialCreate")]
+    [Migration("20201217061221_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

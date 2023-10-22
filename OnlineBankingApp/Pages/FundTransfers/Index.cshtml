@@ -20,6 +20,9 @@
                 @Html.DisplayNameFor(model => model.FundTransfer[0].AccountTo)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.FundTransfer[0].TransactionDate)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.FundTransfer[0].Amount)
             </th>
             <th>
@@ -38,13 +41,21 @@
                 @Html.DisplayFor(modelItem => item.AccountTo)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Amount)
             </td>
             <td>
-                @Html.Raw(item.Note)
+                @if (item.Note is not null) {            
+                    @(new Microsoft.AspNetCore.Html.HtmlString(item.Note))
+                }
             </td>
             <td>
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
+                <a href="@item.GetResendLink()">Send Again</a>
+            </td>	    
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.ID" >See Details</a>
             </td>
         </tr>
 }

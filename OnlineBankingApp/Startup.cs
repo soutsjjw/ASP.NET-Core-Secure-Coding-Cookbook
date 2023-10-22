@@ -11,6 +11,10 @@ using Microsoft.Extensions.Hosting;
 using OnlineBankingApp.Data;
 using Microsoft.EntityFrameworkCore;
 
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Options;
+
 namespace OnlineBankingApp
 {
     public class Startup
@@ -27,6 +31,24 @@ namespace OnlineBankingApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            CultureInfo[] supportedCultures = new[]
+            {
+                    new CultureInfo("en"),
+                    new CultureInfo("de"),
+                    new CultureInfo("fr"),
+                    new CultureInfo("es"),
+                    new CultureInfo("en-GB")
+            };            
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new RequestCulture("en-GB");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+            });   
+
+            services.AddLocalization(options => options.ResourcesPath = "Resources");            
+
             services.AddRazorPages();
 
             if (Environment.IsDevelopment())
@@ -57,6 +79,9 @@ namespace OnlineBankingApp
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            var localizationOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>().Value;
+            app.UseRequestLocalization(localizationOptions);
 
             app.UseAuthorization();
 

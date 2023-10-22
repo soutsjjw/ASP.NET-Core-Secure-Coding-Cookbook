@@ -27,6 +27,7 @@ namespace OnlineBankingApp.Models
         [Required]
         public string LastName { get; set; }
 
+        [DisplayFormat(DataFormatString = "{mm/dd/yyyy}")]
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
