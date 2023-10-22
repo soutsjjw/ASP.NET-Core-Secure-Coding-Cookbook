@@ -11,5 +11,7 @@ namespace OnlineBankingApp.Data
         }
 
         public DbSet<OnlineBankingApp.Models.Customer> Customer { get; set; }
+        public DbSet<OnlineBankingApp.Models.Account> Account { get; set; }
+        public DbSet<OnlineBankingApp.Models.FundTransfer> FundTransfer { get; set; }
     }
 }
