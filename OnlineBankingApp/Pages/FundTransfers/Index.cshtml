@@ -55,7 +55,7 @@
                     }
                 </td>
                 <td>
-                    <a href="@item.GetResendLink()">Send Again</a>
+                    <a asp-page="./Create" asp-route-id="@item.ID" asp-fragment="@(item.Note is null ? string.Empty : item.Note)">Send Again</a>
                 </td>
                 <td>
                     <a asp-page="./Details" asp-route-id="@item.ID">See Details</a>
