@@ -1,5 +1,6 @@
 @page
 @model OnlineBankingApp.Pages.FundTransfers.IndexModel
+@inject System.Text.Encodings.Web.HtmlEncoder htmlEncoder
 
 @{
     ViewData["Title"] = "Fund Transfers";
@@ -32,32 +33,34 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.FundTransfer) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccountFrom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccountTo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TransactionDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @if (item.Note is not null) {            
-                    @(new Microsoft.AspNetCore.Html.HtmlString(item.Note))
-                }
-            </td>
-            <td>
-                <a href="@item.GetResendLink()">Send Again</a>
-            </td>	    
-            <td>
-                <a asp-page="./Details" asp-route-id="@item.ID" >See Details</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.FundTransfer)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountFrom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountTo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @if (item.Note is not null)
+                    {
+                        @(new Microsoft.AspNetCore.Html.HtmlString(htmlEncoder.Encode(item.Note)))
+                    }
+                </td>
+                <td>
+                    <a href="@item.GetResendLink()">Send Again</a>
+                </td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.ID">See Details</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
