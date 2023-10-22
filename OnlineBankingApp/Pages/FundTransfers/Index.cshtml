@@ -1,6 +1,7 @@
 @page
 @model OnlineBankingApp.Pages.FundTransfers.IndexModel
 @inject System.Text.Encodings.Web.HtmlEncoder htmlEncoder
+@inject System.Text.Encodings.Web.UrlEncoder urlEncoder
 
 @{
     ViewData["Title"] = "Fund Transfers";
@@ -55,7 +56,7 @@
                     }
                 </td>
                 <td>
-                    <a asp-page="./Create" asp-route-id="@item.ID" asp-fragment="@(item.Note is null ? string.Empty : item.Note)">Send Again</a>
+                    <a asp-page="./Create" asp-route-id="@item.ID" asp-fragment="@(item.Note is null ? string.Empty : urlEncoder.Encode(item.Note))">Send Again</a>
                 </td>
                 <td>
                     <a asp-page="./Details" asp-route-id="@item.ID">See Details</a>
